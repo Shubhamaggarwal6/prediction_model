@@ -60,3 +60,11 @@ for name, model in models.items():
 # Display the best model
 best_model = min(results, key=results.get)
 print(f"Best model: {best_model} with MSE: {results[best_model]:.4f}")
+
+# Add the roll number to the results and save to CSV
+results_df = pd.DataFrame(list(results.items()), columns=["Model", "Mean Squared Error"])
+results_df["Roll Number"] = roll_number  # Add the roll number column
+
+# Save results to a CSV file
+results_df.to_csv('results.csv', index=False)
+print("Results have been saved to 'results.csv'")
